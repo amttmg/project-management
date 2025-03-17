@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Requests\Project;
 
 use Illuminate\Foundation\Http\FormRequest;
@@ -23,11 +22,12 @@ class UpdateProjectRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', Rule::unique('projects', 'name')->ignore($this->route('project')->id)],
-            'description' => 'string|nullable',
+            'name'              => ['required', 'string', Rule::unique('projects', 'name')->ignore($this->route('project')->id)],
+            'description'       => 'string|nullable',
             'client_company_id' => 'required|integer|exists:client_companies,id',
-            'rate' => 'numeric|min:0|nullable',
-            'users' => 'array',
+            'rate'              => 'numeric|min:0|nullable',
+            'users'             => 'array',
+            'status'            => 'required|integer|exists:project_statuses,id',
         ];
     }
 }

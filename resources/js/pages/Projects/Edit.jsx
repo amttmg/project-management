@@ -19,7 +19,7 @@ import {
 } from '@mantine/core';
 import { useEffect, useState } from 'react';
 
-const ProjectEdit = ({ dropdowns: { companies, users,currencies } }) => {
+const ProjectEdit = ({ dropdowns: { companies, users, currencies, status } }) => {
   const { item } = usePage().props;
   const [currencySymbol, setCurrencySymbol] = useState();
 
@@ -29,6 +29,7 @@ const ProjectEdit = ({ dropdowns: { companies, users,currencies } }) => {
     description: item.description || '',
     client_company_id: item.client_company_id || '',
     rate: item.rate / 100 || 0,
+    status: item.status,
     users: item.users.map(i => i.id.toString()),
   });
 
@@ -104,6 +105,17 @@ const ProjectEdit = ({ dropdowns: { companies, users,currencies } }) => {
             error={form.errors.client_company_id}
           />
 
+          <Select
+            label='Status'
+            placeholder='Status'
+            required
+            mt='md'
+            value={form.data.status?.toString()}
+            onChange={value => updateValue('status', value)}
+            data={status}
+            error={form.errors.status}
+          />
+
           <MultiSelect
             label="Grant access to users"
             placeholder="Select users"
@@ -114,20 +126,6 @@ const ProjectEdit = ({ dropdowns: { companies, users,currencies } }) => {
             data={users}
             error={form.errors.users}
           />
-
-          <NumberInput
-            label='Hourly rate'
-            mt='md'
-            allowNegative={false}
-            clampBehavior='strict'
-            decimalScale={2}
-            fixedDecimalScale={true}
-            prefix={currencySymbol}
-            value={form.data.rate}
-            onChange={value => updateValue('rate', value)}
-            error={form.errors.rate}
-          />
-
           <Group
             justify='space-between'
             mt='xl'

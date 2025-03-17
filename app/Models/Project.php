@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -23,6 +22,7 @@ class Project extends Model implements AuditableContract
         'description',
         'rate',
         'client_company_id',
+        'status',
     ];
 
     protected $searchable = [
@@ -75,7 +75,7 @@ class Project extends Model implements AuditableContract
     {
         return self::orderBy('name')
             ->get(['id', 'name'])
-            ->map(fn ($i) => ['value' => (string) $i->id, 'label' => $i->name])
+            ->map(fn($i) => ['value' => (string) $i->id, 'label' => $i->name])
             ->toArray();
     }
 }

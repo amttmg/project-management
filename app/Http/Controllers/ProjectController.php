@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Project\StoreProjectRequest;
@@ -24,7 +23,7 @@ class ProjectController extends Controller
     public function index(Request $request)
     {
         return Inertia::render('Projects/Index', [
-            'items' => ProjectResource::collection(
+            'items'  => ProjectResource::collection(
                 Project::searchByQueryString()
                     ->when($request->user()->isNotAdmin(), function ($query) {
                         $query->whereHas('clientCompany.clients', fn($query) => $query->where('users.id', auth()->id()))
@@ -39,14 +38,14 @@ class ProjectController extends Controller
                     ->withCount([
                         'tasks AS all_tasks_count',
                         'tasks AS completed_tasks_count' => fn($query) => $query->whereNotNull('completed_at'),
-                        'tasks AS overdue_tasks_count' => fn($query) => $query->whereNull('completed_at')->whereDate('due_on', '<', now()),
+                        'tasks AS overdue_tasks_count'   => fn($query)   => $query->whereNull('completed_at')->whereDate('due_on', '<', now()),
                     ])
                     ->withExists('favoritedByAuthUser AS favorite')
                     ->orderBy('favorite', 'desc')
                     ->orderBy('name', 'asc')
                     ->get()
             ),
-            'status' => ProjectStatus::all()
+            'status' => ProjectStatus::all(),
         ]);
     }
 
@@ -54,8 +53,8 @@ class ProjectController extends Controller
     {
         return Inertia::render('Projects/Create', [
             'dropdowns' => [
-                'companies' => ClientCompany::dropdownValues(),
-                'users' => User::userDropdownValues(),
+                'companies'  => ClientCompany::dropdownValues(),
+                'users'      => User::userDropdownValues(),
                 'currencies' => Currency::dropdownValues(['with' => ['clientCompanies:id,currency_id']]),
             ],
         ]);
@@ -66,6 +65,7 @@ class ProjectController extends Controller
         $data = $request->validated();
 
         $data['rate'] *= 100;
+        $data['status'] = 2;
 
         $project = Project::create($data);
 
@@ -88,10 +88,11 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         return Inertia::render('Projects/Edit', [
-            'item' => $project,
+            'item'      => $project,
             'dropdowns' => [
-                'companies' => ClientCompany::dropdownValues(),
-                'users' => User::userDropdownValues(),
+                'status'     => ProjectStatus::dropdownValues(),
+                'companies'  => ClientCompany::dropdownValues(),
+                'users'      => User::userDropdownValues(),
                 'currencies' => Currency::dropdownValues(['with' => ['clientCompanies:id,currency_id']]),
             ],
         ]);
