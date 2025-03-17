@@ -70,6 +70,8 @@ class ProjectController extends Controller
         $project->users()->attach($data['users']);
 
         $project->taskGroups()->createMany([
+            ['name' => 'Documents'],
+            ['name' => 'Credentials'],
             ['name' => 'Backlog'],
             ['name' => 'Todo'],
             ['name' => 'In progress'],

@@ -1,6 +1,6 @@
 import Layout from "@/layouts/MainLayout";
 import { usePage } from "@inertiajs/react";
-import { Title } from "@mantine/core";
+import { Title, Divider } from "@mantine/core";
 import Masonry from "react-masonry-css";
 import OverdueTasks from "./Cards/OverdueTasks";
 import { ProjectCard } from "./Cards/ProjectCard";
@@ -28,6 +28,15 @@ const Dashboard = () => {
         {projects.map((project) => (
           <ProjectCard key={project.id} project={project} />
         ))}
+
+
+      </Masonry>
+      <Divider mt="xl" mb="md" label="Other Activities" labelPosition="center" />
+      <Masonry
+        breakpointCols={breakpointColumns}
+        className={classes.myMasonryGrid}
+        columnClassName={classes.myMasonryGridColumn}
+      >
         <OverdueTasks tasks={overdueTasks} />
         <RecentlyAssignedTasks tasks={recentlyAssignedTasks} />
         <RecentComments comments={recentComments} />

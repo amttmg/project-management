@@ -91,26 +91,26 @@ export default function Sidebar() {
         icon: IconFileDollar,
         link: route("invoices.index"),
         active: route().current("invoices.*"),
-        visible: can("view invoices"),
+        visible: false,
       },
       {
         label: "Reports",
         icon: IconReportAnalytics,
         active: route().current("reports.*"),
         opened: route().current("reports.*"),
-        visible: can("view logged time sum report") || can("view daily logged time report"),
+        visible: false,
         links: [
           {
             label: "Logged time sum",
             link: route("reports.logged-time.sum"),
             active: route().current("reports.logged-time.sum"),
-            visible: can("view logged time sum report"),
+            visible: false,
           },
           {
             label: "Daily logged time",
             link: route("reports.logged-time.daily"),
             active: route().current("reports.logged-time.daily"),
-            visible: can("view daily logged time report"),
+            visible: false,
           },
         ],
       },
@@ -149,9 +149,9 @@ export default function Sidebar() {
       <div className={classes.header}>
         <Group justify="space-between">
           <Logo style={{ width: rem(120) }} />
-          <Text size="xs" className={classes.version}>
+          {/* <Text size="xs" className={classes.version}>
             v{version}
-          </Text>
+          </Text> */}
         </Group>
       </div>
 

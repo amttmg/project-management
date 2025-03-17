@@ -43,7 +43,17 @@ export default function Dropzone({ selected, onChange, remove, ...props }) {
   return (
     <>
       <ImageModal image={selectedImage} opened={opened} close={close} />
-
+      <SimpleGrid cols={1} mt="lg">
+        {selected.map((file, index) => (
+          <FileThumbnail
+            key={index}
+            index={index}
+            file={file}
+            remove={() => confirmDeleteAttachment(index)}
+            open={() => openFile(file)}
+          />
+        ))}
+      </SimpleGrid>
       <MantineDropzone
         onDrop={(files) => onChange([...selected, ...files])}
         onReject={(files) => console.log("rejected files", files)}
@@ -92,17 +102,7 @@ export default function Dropzone({ selected, onChange, remove, ...props }) {
         </Group>
       </MantineDropzone>
 
-      <SimpleGrid cols={2} mt="lg">
-        {selected.map((file, index) => (
-          <FileThumbnail
-            key={index}
-            index={index}
-            file={file}
-            remove={() => confirmDeleteAttachment(index)}
-            open={() => openFile(file)}
-          />
-        ))}
-      </SimpleGrid>
+
     </>
   );
 }

@@ -82,11 +82,11 @@ export default function FileThumbnail({ file, remove, open, ...props }) {
     <Group gap="sm" wrap="nowrap" className={classes.file} {...props}>
       <div className={classes.iconContainer}>
         <div className={classes.icon}>{icon}</div>
-        <IconCircleX
+        {/* <IconCircleX
           className={classes.remove}
           stroke={1.5}
           onClick={() => remove()}
-        />
+        /> */}
       </div>
       <div className={classes.text}>
         <Text

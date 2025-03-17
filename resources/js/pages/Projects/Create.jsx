@@ -93,7 +93,7 @@ const ProjectCreate = ({ dropdowns: { companies, users, currencies } }) => {
           <Select
             label='Company requesting work'
             placeholder='Select company'
-            required
+            
             mt='md'
             value={form.data.client_company_id}
             onChange={value => updateValue('client_company_id', value)}
@@ -112,7 +112,7 @@ const ProjectCreate = ({ dropdowns: { companies, users, currencies } }) => {
             error={form.errors.users}
           />
 
-          <NumberInput
+          {/* <NumberInput
             label='Hourly rate'
             mt='md'
             allowNegative={false}
@@ -123,7 +123,7 @@ const ProjectCreate = ({ dropdowns: { companies, users, currencies } }) => {
             value={form.data.rate}
             onChange={value => updateValue('rate', value)}
             error={form.errors.rate}
-          />
+          /> */}
 
           <Group
             justify='space-between'
