@@ -28,20 +28,20 @@ export default function ProjectCard({ item }) {
           {item.client_company?.name}
         </Text>
 
-        {item.description?.length > 0 && (
+        {/* {item.description?.length > 0 && (
           <Text fz="sm" c="dimmed" mt="lg">
             {item.description}
           </Text>
-        )}
+        )} */}
 
-        <Text c="dimmed" fz="sm" mt="md">
+        {/* <Text c="dimmed" fz="sm" mt="md">
           Completed tasks:{" "}
           <Text span fw={500} c="bright">
             {item.completed_tasks_count} / {item.all_tasks_count}
           </Text>
-        </Text>
+        </Text> */}
 
-        <Progress.Root value={item.all_tasks_count} mt={10} radius="xl">
+        {/* <Progress.Root value={item.all_tasks_count} mt={10} radius="xl">
           <Tooltip label={`Completed: ${item.completed_tasks_count}`} withArrow>
             <Progress.Section value={completedPercent} color="blue" />
           </Tooltip>
@@ -49,7 +49,7 @@ export default function ProjectCard({ item }) {
             <Progress.Section value={overduePercent} color="red" />
           </Tooltip>
           <Progress.Section value={100 - (completedPercent + overduePercent)} color="gray" />
-        </Progress.Root>
+        </Progress.Root> */}
 
         <Group justify="space-between" mt="md">
           <Avatar.Group spacing="sm">
