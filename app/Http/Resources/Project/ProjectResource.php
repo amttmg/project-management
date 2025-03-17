@@ -25,6 +25,7 @@ class ProjectResource extends JsonResource
             'all_tasks_count' => $this->all_tasks_count,
             'completed_tasks_count' => $this->completed_tasks_count,
             'overdue_tasks_count' => $this->overdue_tasks_count,
+            'status' => $this->status,
         ];
     }
 }

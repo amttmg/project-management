@@ -8,6 +8,7 @@ use App\Http\Resources\Project\ProjectResource;
 use App\Models\ClientCompany;
 use App\Models\Currency;
 use App\Models\Project;
+use App\Models\ProjectStatus;
 use App\Models\User;
 use App\Services\ProjectService;
 use Illuminate\Http\Request;
@@ -26,10 +27,10 @@ class ProjectController extends Controller
             'items' => ProjectResource::collection(
                 Project::searchByQueryString()
                     ->when($request->user()->isNotAdmin(), function ($query) {
-                        $query->whereHas('clientCompany.clients', fn ($query) => $query->where('users.id', auth()->id()))
-                            ->orWhereHas('users', fn ($query) => $query->where('id', auth()->id()));
+                        $query->whereHas('clientCompany.clients', fn($query) => $query->where('users.id', auth()->id()))
+                            ->orWhereHas('users', fn($query) => $query->where('id', auth()->id()));
                     })
-                    ->when($request->has('archived'), fn ($query) => $query->onlyArchived())
+                    ->when($request->has('archived'), fn($query) => $query->onlyArchived())
                     ->with([
                         'clientCompany:id,name',
                         'clientCompany.clients:id,name,avatar',
@@ -37,14 +38,15 @@ class ProjectController extends Controller
                     ])
                     ->withCount([
                         'tasks AS all_tasks_count',
-                        'tasks AS completed_tasks_count' => fn ($query) => $query->whereNotNull('completed_at'),
-                        'tasks AS overdue_tasks_count' => fn ($query) => $query->whereNull('completed_at')->whereDate('due_on', '<', now()),
+                        'tasks AS completed_tasks_count' => fn($query) => $query->whereNotNull('completed_at'),
+                        'tasks AS overdue_tasks_count' => fn($query) => $query->whereNull('completed_at')->whereDate('due_on', '<', now()),
                     ])
                     ->withExists('favoritedByAuthUser AS favorite')
                     ->orderBy('favorite', 'desc')
                     ->orderBy('name', 'asc')
                     ->get()
             ),
+            'status' => ProjectStatus::all()
         ]);
     }
 
