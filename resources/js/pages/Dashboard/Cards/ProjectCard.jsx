@@ -40,15 +40,15 @@ export function ProjectCard({ project }) {
           <Text fz="xs" fw={700} c="dimmed" mb={4}>
             {project.client_company.name}
           </Text>
-          <div>
+          {/* <div>
             <Tooltip label="Completed tasks" openDelay={500} withArrow>
               <Text fz="lg" fw={500} inline span>
                 Tasks: {project.completed_tasks_count} / {project.all_tasks_count}
               </Text>
             </Tooltip>
-          </div>
+          </div> */}
         </Stack>
-        <RingProgress
+        {/* <RingProgress
           size={100}
           thickness={10}
           sections={[
@@ -69,7 +69,7 @@ export function ProjectCard({ project }) {
               {round(completedPercent)}%
             </Text>
           }
-        />
+        /> */}
       </Group>
     </Card>
   );

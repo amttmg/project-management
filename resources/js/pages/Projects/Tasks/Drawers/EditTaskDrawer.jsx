@@ -170,16 +170,7 @@ export function EditTaskDrawer() {
                 readOnly={!can("edit task")}
               />
 
-              <RichTextEditor
-                ref={editorRef}
-                mt="xl"
-                placeholder="Task description"
-                content={data.description}
-                height={260}
-                onChange={(content) => updateValue("description", content)}
-                onBlur={() => onBlurUpdate("description")}
-                readOnly={!can("edit task")}
-              />
+
 
               {can("edit task") && (
                 <Dropzone
@@ -190,7 +181,20 @@ export function EditTaskDrawer() {
                 />
               )}
 
+              <RichTextEditor
+                ref={editorRef}
+                mt="xl"
+                placeholder="Task description"
+                content={data.description}
+                height={100}
+                onChange={(content) => updateValue("description", content)}
+                onBlur={() => onBlurUpdate("description")}
+                readOnly={!can("edit task")}
+              />
+
               {can("view comments") && <Comments task={task} />}
+
+
             </div>
             <div className={classes.sidebar}>
               <Select
@@ -220,7 +224,7 @@ export function EditTaskDrawer() {
                 readOnly={!can("edit task")}
               />
 
-              <DateInput
+              {/* <DateInput
                 clearable
                 valueFormat="DD MMM YYYY"
                 minDate={new Date()}
@@ -230,7 +234,7 @@ export function EditTaskDrawer() {
                 value={data.due_on}
                 onChange={(value) => updateValue("due_on", value)}
                 readOnly={!can("edit task")}
-              />
+              /> */}
 
               <LabelsDropdown
                 items={labels}
@@ -239,7 +243,7 @@ export function EditTaskDrawer() {
                 mt="md"
               />
 
-              <NumberInput
+              {/* <NumberInput
                 label="Time estimation"
                 mt="md"
                 decimalScale={2}
@@ -251,9 +255,9 @@ export function EditTaskDrawer() {
                 suffix=" hours"
                 onChange={(value) => updateValue("estimation", value)}
                 readOnly={!can("edit task")}
-              />
+              /> */}
 
-              {(can("view time logs") || can("add time log")) && <Timer mt="xl" task={task} />}
+              {/* {(can("view time logs") || can("add time log")) && <Timer mt="xl" task={task} />}
 
               <Checkbox
                 label="Billable"
@@ -261,9 +265,9 @@ export function EditTaskDrawer() {
                 checked={data.billable}
                 onChange={(event) => updateValue("billable", event.currentTarget.checked)}
                 disabled={!can("edit task")}
-              />
+              /> */}
 
-              {!hasRoles(user, ["client"]) && (
+              {/* {!hasRoles(user, ["client"]) && (
                 <Checkbox
                   label="Hidden from clients"
                   mt="md"
@@ -273,7 +277,7 @@ export function EditTaskDrawer() {
                   }
                   disabled={!can("edit task")}
                 />
-              )}
+              )} */}
 
               <MultiSelect
                 label="Subscribers"

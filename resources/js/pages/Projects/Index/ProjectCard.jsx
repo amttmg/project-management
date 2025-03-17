@@ -16,7 +16,7 @@ export default function ProjectCard({ item }) {
       className={classes.link}
       onClick={stopOnIgnoreLink}
     >
-      <Card withBorder padding="xl" radius="md" w={350} className={classes.card}>
+      <Card withBorder padding="xl" radius="md" w={290} className={classes.card}>
         <Group justify="space-between">
           <Text fz={23} fw={700} className={classes.title}>
             {item.name}
@@ -28,11 +28,11 @@ export default function ProjectCard({ item }) {
           {item.client_company?.name}
         </Text>
 
-        {/* {item.description?.length > 0 && (
+        {item.description?.length > 0 && (
           <Text fz="sm" c="dimmed" mt="lg">
             {item.description}
           </Text>
-        )} */}
+        )}
 
         {/* <Text c="dimmed" fz="sm" mt="md">
           Completed tasks:{" "}
