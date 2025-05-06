@@ -20,7 +20,7 @@ import classes from "./css/OverdueTasks.module.css";
 export default function OverdueTasks({ tasks }) {
   return (
     <Card bg="none">
-      <Title order={3} ml={15}>
+      <Title order={3} ml={15} fz={18}>
         Overdue tasks
       </Title>
 

@@ -18,9 +18,8 @@ export default function TaskCard({ task, index }) {
         <div
           {...provided.draggableProps}
           ref={provided.innerRef}
-          className={`${classes.task} ${snapshot.isDragging && classes.itemDragging} ${
-            task.completed_at !== null && classes.completed
-          }`}
+          className={`${classes.task} ${snapshot.isDragging && classes.itemDragging} ${task.completed_at !== null && classes.completed
+            }`}
         >
           <div {...(can("reorder task") && provided.dragHandleProps)}>
             <Text

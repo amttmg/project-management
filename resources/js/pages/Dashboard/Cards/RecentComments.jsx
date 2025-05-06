@@ -20,7 +20,7 @@ import classes from "./css/RecentComments.module.css";
 export default function RecentComments({ comments }) {
   return (
     <Card bg="none">
-      <Title order={3} ml={15}>
+      <Title order={3} ml={15} fz={18}>
         Recent comments
       </Title>
 
