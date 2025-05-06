@@ -21,7 +21,7 @@ export default function ProjectCard({ item }) {
           <Text fz={18} fw={700} className={classes.title}>
             {item.name}
           </Text>
-          <ToggleFavorite item={item} />
+          {/* <ToggleFavorite item={item} /> */}
         </Group>
 
         <Text fz="15" fw={500}>
