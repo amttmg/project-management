@@ -95,7 +95,7 @@ const ProjectEdit = ({ dropdowns: { companies, users, currencies, status } }) =>
           />
 
           <Select
-            label='Company requesting work'
+            label='Vendor fot the project'
             placeholder='Select company'
             required
             mt='md'

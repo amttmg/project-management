@@ -200,7 +200,7 @@ export function CreateTaskDrawer() {
             mt="md"
           />
 
-          <NumberInput
+          {/* <NumberInput
             label="Time estimation"
             mt="md"
             decimalScale={2}
@@ -211,23 +211,23 @@ export function CreateTaskDrawer() {
             step={0.5}
             suffix=" hours"
             onChange={(value) => updateValue("estimation", value)}
-          />
+          /> */}
 
-          <Checkbox
+          {/* <Checkbox
             label="Billable"
             mt="xl"
             checked={form.data.billable}
             onChange={(event) => updateValue("billable", event.currentTarget.checked)}
-          />
+          /> */}
 
-          {!hasRoles(user, ["client"]) && (
+          {/* {!hasRoles(user, ["client"]) && (
             <Checkbox
               label="Hidden from clients"
               mt="md"
               checked={form.data.hidden_from_clients}
               onChange={(event) => updateValue("hidden_from_clients", event.currentTarget.checked)}
             />
-          )}
+          )} */}
         </div>
       </form>
     </Drawer>

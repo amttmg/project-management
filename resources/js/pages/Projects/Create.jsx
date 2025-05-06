@@ -91,9 +91,9 @@ const ProjectCreate = ({ dropdowns: { companies, users, currencies } }) => {
           />
 
           <Select
-            label='Company requesting work'
+            label='Vendor fot the project'
             placeholder='Select company'
-            
+
             mt='md'
             value={form.data.client_company_id}
             onChange={value => updateValue('client_company_id', value)}
