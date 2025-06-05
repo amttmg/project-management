@@ -30,7 +30,7 @@ export default function TaskGroup({ group, tasks, ...props }) {
                   stroke={1.5}
                 />
               </div>
-              <Text size="xl" fw={700}>
+              <Text size="xl" fz={14} fw={700}>
                 {group.name}
               </Text>
               <TaskGroupActions group={group} className={classes.actions} />

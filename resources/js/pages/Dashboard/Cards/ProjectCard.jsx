@@ -20,7 +20,7 @@ export function ProjectCard({ project }) {
         <Stack gap={6}>
           <Group justify="space-between">
             <Title
-              fz={24}
+              fz={18}
               onClick={() => redirectTo("projects.tasks", project.id)}
               className={classes.link}
             >

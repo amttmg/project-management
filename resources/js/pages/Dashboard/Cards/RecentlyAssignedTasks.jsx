@@ -20,7 +20,7 @@ import classes from "./css/RecentlyAssignedTasks.module.css";
 export default function RecentlyAssignedTasks({ tasks }) {
   return (
     <Card bg="none">
-      <Title order={3} ml={15}>
+      <Title order={3} ml={15} fz={18}>
         Recently assigned tasks
       </Title>
 
